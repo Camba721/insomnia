@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css -->
+    <link rel="stylesheet" href="administrator.css">
+    <!-- fontawsome -->
+    <script src="https://kit.fontawesome.com/34bac4efbb.js" crossorigin="anonymous"></script>
+    <title>INSOMNIA</title>
+</head>
+
+<body>
+    <!-- -----------------------------------------HEADER------------------------------------------- -->
+    <header class="header">
+        <div class="header__top">
+            <h2 class="header__top__logo">
+                <a href="index.html">INSOMNIA
+                    <span>movies</span></a>
+            </h2>
+            <h3 class="header__top__api">
+                <a href="https://developer.themoviedb.org/docs/getting-started" target="_blank">TMDB API</a>
+            </h3>
+        </div>
+    </header>
+
+    <!-- -----------------------------------------MAIN------------------------------------------- -->
+    <main class="main">
+
+        <!-- -----------------------------------------MAIN FORM/FORMULARIO DE PELÍCULAS------------------------------------------- -->
+        <section class="main__admin">
+            <h2 class="main__admin__title">Gestión de películas</h2>
+            <p>Ingrese la información necesaria para la carga de la película</p>
+
+            <form action="" class="main__admin__form" method="get" id="form-peliculas">
+                <div>
+                    <label for="titulo">Título</label>
+                    <!-- En cada input cuando la validación se erronea, hay que agregar 'error' a la clase -->
+                    <input class="main__admin__form__input" type="text" name="titulo" id="titulo">
+                    <!-- div para los mensajes de error que tiene que tener class="error-text" -->
+                    <div id="error-titulo" class="error-text"></div>
+                </div>
+
+                <div>
+                    <label for="fecha">Fecha de lanzamiento</label>
+                    <input class="main__admin__form__input" type="date" name="fecha" id="fecha">
+                    <div id="error-fecha" class="error-text"></div>
+                </div>
+
+                <div>
+                    <label for="genero">Género</label>
+                    <input class="main__admin__form__input" type="text" name="genero" id="genero">
+                    <div  id="error-genero" class="error-text"></div>
+                </div>
+
+
+                <div>
+                    <label for="duracion">Duración</label>
+                    <input class="main__admin__form__input" type="text" name="duracion" id="duracion">
+                    <div id="error-duracion" class="error-text"></div>
+                </div>
+
+                <div>
+                    <label for="director">Director</label>
+                    <input class="main__admin__form__input" type="text" name="director" id="director">
+                    <div id="error-director" class="error-text"></div>
+                </div>
+
+                <div>
+                    <label for="reparto">Reparto</label>
+                    <input class="main__admin__form__input" type="text" name="reparto" id="reparto">
+                    <div id="error-reparto" class="error-text"></div>
+                </div>
+
+                <div>
+                    <label for="sinopsis">Sinopsis</label>
+                    <textarea class="main__admin__form__input" name="sinopsis" id="sinopsis"></textarea>
+                    <div id="error-sinopsis" class="error-text"></div>
+                </div>
+
+                <div>
+                    <label for="imagen">Imagen</label>
+                    <input class="main__admin__form__input" type="text" name="imagen" id="imagen">
+                    <div id="error-imagen" class="error-text"></div>
+                </div>
+
+                <div>
+                    <input class="main__admin__form__btn btn" type="submit" value="Agregar Pelicula">
+                    <div></div>
+                </div>
+
+            </form>
+        </section>
+
+        <!-- --------------------MAIN LIST/LISTA DE PELÍCULAS-------------------------- -->
+        <section class="main__list">
+            <h2 class="main__list__title">Listado de Películas</h2>
+            <p>Para ver todos los datos de las peliculas, elija una y precione modificar</p>
+
+            <!-- Para la carga de películas se eliminan los main__list__table__item que sobran. -->
+            <!-- Se usan los id de cada <td> para insertar los datos que vengan de la base de datos -->
+            <div class="main__list__table">
+                <div class="main__list__table__item">
+                    <img id="pelicula-img"
+                        src="https://m.media-amazon.com/images/M/MV5BZGMxZTdjZmYtMmE2Ni00ZTdkLWI5NTgtNjlmMjBiNzU2MmI5XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
+                        alt="">
+
+                    <table>
+                        <tr>
+                            <th>Título</th>
+                        </tr>
+                        <tr>
+                            <td id="pelicula-titulo">The Lord of the Rings: The Two Towers(2002)</td>
+                        </tr>
+                        <tr>
+                            <th>Género</th>
+                        </tr>
+                        <tr>
+                            <td id="pelicula-genero">Action, Adventure, Drama</td>
+                        </tr>
+                        <tr>
+                            <th>Acciones</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="main__list__table__item__btn btn modificar">Modificar</button>
+                                <button class="main__list__table__item__btn btn eliminar">Eliminar</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="main__list__table__item">
+                    <img src="https://m.media-amazon.com/images/M/MV5BZGMxZTdjZmYtMmE2Ni00ZTdkLWI5NTgtNjlmMjBiNzU2MmI5XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
+                        alt="">
+                    <table>
+                        <tr>
+                            <th>Título</th>
+                        </tr>
+                        <tr>
+                            <td>The Lord of the Rings: The Two Towers(2002)</td>
+                        </tr>
+                        <tr>
+                            <th>Género</th>
+                        </tr>
+                        <tr>
+                            <td>Action, Adventure, Drama</td>
+                        </tr>
+                        <tr>
+                            <th>Acciones</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="main__list__table__item__btn btn modificar">Modificar</button>
+                                <button class="main__list__table__item__btn btn eliminar">Eliminar</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="main__list__table__item">
+                    <img src="https://m.media-amazon.com/images/M/MV5BZGMxZTdjZmYtMmE2Ni00ZTdkLWI5NTgtNjlmMjBiNzU2MmI5XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
+                        alt="">
+                    <table>
+                        <tr>
+                            <th>Título</th>
+                        </tr>
+                        <tr>
+                            <td>The Lord of the Rings: The Two Towers(2002)</td>
+                        </tr>
+                        <tr>
+                            <th>Género</th>
+                        </tr>
+                        <tr>
+                            <td>Action, Adventure, Drama</td>
+                        </tr>
+                        <tr>
+                            <th>Acciones</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="main__list__table__item__btn btn modificar">Modificar</button>
+                                <button class="main__list__table__item__btn btn eliminar">Eliminar</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="main__list__table__item">
+                    <img src="https://m.media-amazon.com/images/M/MV5BZGMxZTdjZmYtMmE2Ni00ZTdkLWI5NTgtNjlmMjBiNzU2MmI5XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
+                        alt="">
+                    <table>
+                        <tr>
+                            <th>Título</th>
+                        </tr>
+                        <tr>
+                            <td>The Lord of the Rings: The Two Towers(2002)</td>
+                        </tr>
+                        <tr>
+                            <th>Género</th>
+                        </tr>
+                        <tr>
+                            <td>Action, Adventure, Drama</td>
+                        </tr>
+                        <tr>
+                            <th>Acciones</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="main__list__table__item__btn btn modificar">Modificar</button>
+                                <button class="main__list__table__item__btn btn eliminar">Eliminar</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- -----------------------------------------fOOTER------------------------------------------- -->
+    <footer class="footer">
+        <h2 class="footer__logo">
+            <a href="index.html">INSOMNIA
+                <span>movies</span></a>
+        </h2>
+
+        <p>Proyecto final Codo a Codo 2024 | Grupo 5</p>
+
+        <a href=""><i class="fa-regular fa-circle-up"></i></a>
+    </footer>
+    <script src="validacionpeliculas.js"></script>
+</body>
+
+</html>
