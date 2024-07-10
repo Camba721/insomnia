@@ -23,6 +23,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             const movieItem = document.createElement('div');
             movieItem.classList.add('main__list__table__item');
 
+            // Divide el género en palabras separadas
+            const genres = movie.genero.split('/').map(genre => genre.trim());
+
             movieItem.innerHTML = `
                 <img id="pelicula-img" src="${movie.imagen}" alt="${movie.titulo}">
                 <table>
@@ -36,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <th>Género</th>
                     </tr>
                     <tr>
-                        <td id="pelicula-genero">${movie.genero}</td>
+                        <td id="pelicula-genero">${genres.join(', ')}</td>
                     </tr>
                     <tr>
                         <th>Acciones</th>
