@@ -1,3 +1,5 @@
+import { insertModifyForm } from './put_peliculas.js';
+
 document.addEventListener('DOMContentLoaded', async () => {
     const mainListTable = document.querySelector('.main__list__table');
 
@@ -28,6 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const movieItem = document.createElement('div');
             movieItem.classList.add('main__list__table__item');
+            movieItem.dataset.idPelicula = movie.idPelicula;
 
             // Divide el género en palabras separadas
             const genres = movie.genero.split('/').map(genre => genre.trim());
@@ -62,8 +65,18 @@ document.addEventListener('DOMContentLoaded', async () => {
             mainListTable.appendChild(movieItem);
         });
 
+        // Añadir manejadores de eventos para los botones de modificar
+        document.querySelectorAll('.modificar').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const movieItem = event.target.closest('.main__list__table__item');
+                const movieId = movieItem.dataset.idPelicula;
+                console.log("ID de la película a modificar:", movieId);
+                insertModifyForm(movieId, movies);
+            });
+        });
+
     } catch (error) {
         console.error("Error al obtener las películas:", error);
-        mainListTable.innerHTML = '<p>Error al cargar las películas. Por favor, intenta de nuevo más tarde.</p>';
+        mainListTable.innerHTML = '<p class="error-movies">Error al cargar las películas. Por favor, intenta de nuevo más tarde.</p>';
     }
 });
