@@ -14,11 +14,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const sinopsis = formData.get('sinopsis');
         const imagen = formData.get('imagen');
 
-        if (titulo === '' || fecha === '' || genero === '' || duracion === '' || director === '' || reparto === '' || sinopsis === '' || imagen === '') {
-            alert('Todos los campos son obligatorios');
-            return;
-        }
-
         const options = {
             method: 'POST',
             headers: {
@@ -40,13 +35,25 @@ document.addEventListener('DOMContentLoaded', async () => {
             const response = await fetch('http://localhost:8080/app/peliculas', options);
 
             if (response.ok) {
-                const responseData = await response.json();
-                alert('Película agregada correctamente');
-                formPeliculas.reset();
-                location.reload();
+
+                Swal.fire({
+                    icon: "success",
+                    title: "Película agregada correctamente",
+                    confirmButtonColor: "#e9540e"
+                }).then(() => {
+                    formPeliculas.reset();
+                    location.reload();
+                });
+
             } else {
                 const errorData = await response.json();
-                alert(`Error al agregar la película: ${errorData.message || 'Error desconocido'}`);
+
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: `Error al agregar la película: ${errorData.message || 'Todos los campos son obligatorios'}`,
+                    confirmButtonColor: "#e9540e"
+                });
             }
         } catch (error) {
             alert(`Error de red: ${error.message}`);

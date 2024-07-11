@@ -1,25 +1,31 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const mainListTable = document.querySelector('.main__list__table'); // Asegúrate de que este selector sea correcto
+    const mainListTable = document.querySelector('.main__list__table');
 
     try {
+
         console.log("Iniciando petición fetch...");
+
         const response = await fetch('http://localhost:8080/app/peliculas', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             }
         });
+
         console.log("Respuesta recibida:", response);
+
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const movies = await response.json();
+
         console.log("Datos recibidos:", movies);
 
         // Limpiamos el contenido existente
         mainListTable.innerHTML = '';
 
         movies.forEach(movie => {
+
             const movieItem = document.createElement('div');
             movieItem.classList.add('main__list__table__item');
 
@@ -55,6 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             mainListTable.appendChild(movieItem);
         });
+
     } catch (error) {
         console.error("Error al obtener las películas:", error);
         mainListTable.innerHTML = '<p>Error al cargar las películas. Por favor, intenta de nuevo más tarde.</p>';
