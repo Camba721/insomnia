@@ -1,4 +1,5 @@
 import { insertModifyForm } from './put_peliculas.js';
+import { deleteMovieBtns } from './delete_peliculas.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     const mainListTable = document.querySelector('.main__list__table');
@@ -65,7 +66,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             mainListTable.appendChild(movieItem);
         });
 
-        // Añadir manejadores de eventos para los botones de modificar
+        // Evento para los botones de modificar
         document.querySelectorAll('.modificar').forEach(button => {
             button.addEventListener('click', (event) => {
                 const movieItem = event.target.closest('.main__list__table__item');
@@ -74,6 +75,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 insertModifyForm(movieId, movies);
             });
         });
+
+        //Manejador de evento para los botones de eliminar
+        deleteMovieBtns(movies);
 
     } catch (error) {
         console.error("Error al obtener las películas:", error);

@@ -13,10 +13,8 @@ export function insertModifyForm(movieId, movies) {
         return;
     }
 
-
     const formContainer = document.createElement('div');
     formContainer.classList.add('modify-form-container');
-
 
     const modifyForm = document.createElement('div');
     modifyForm.classList.add('modify-form');
@@ -59,7 +57,6 @@ export function insertModifyForm(movieId, movies) {
     formContainer.appendChild(modifyForm);
     movieItem.parentNode.insertBefore(formContainer, movieItem.nextSibling);
 
-    // Manejar el envío del formulario
     const form = document.getElementById(`modify-form-${movieId}`);
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -91,7 +88,6 @@ export function insertModifyForm(movieId, movies) {
             });
 
             if (updateResponse.ok) {
-
                 Swal.fire({
                     icon: "success",
                     title: "Película actualizada correctamente",
@@ -103,7 +99,6 @@ export function insertModifyForm(movieId, movies) {
 
             } else {
                 const errorData = await response.json();
-
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
